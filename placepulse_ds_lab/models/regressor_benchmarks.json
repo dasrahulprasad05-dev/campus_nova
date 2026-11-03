@@ -1,0 +1,39 @@
+{
+  "production_model": "Ridge Regression (alpha=1.0)",
+  "best_cv_mae_lpa": 0.2169,
+  "test_metrics": {
+    "test_mae_lpa": 0.2045,
+    "test_rmse_lpa": 0.2416,
+    "test_r2": 0.7932,
+    "dummy_baseline_mae": 0.4606
+  },
+  "repeated_cv_leaderboard": {
+    "Baseline (Predict Mean)": {
+      "cv_mae": 0.5571,
+      "cv_r2": -0.0568
+    },
+    "Baseline (Predict Median)": {
+      "cv_mae": 0.5584,
+      "cv_r2": -0.0863
+    },
+    "Ridge Regression (alpha=1.0)": {
+      "cv_mae": 0.2169,
+      "cv_r2": 0.8062
+    },
+    "Linear Regression (OLS)": {
+      "cv_mae": 0.2174,
+      "cv_r2": 0.8053
+    },
+    "Random Forest Regressor": {
+      "cv_mae": 0.2915,
+      "cv_r2": 0.67
+    },
+    "Gradient Boosting Regressor": {
+      "cv_mae": 0.2937,
+      "cv_r2": 0.651
+    }
+  },
+  "train_samples": 107,
+  "test_samples": 27,
+  "dataset_disclaimer": "Benchmark based on campus management & tech recruitment records (Ben Roshan dataset)."
+}

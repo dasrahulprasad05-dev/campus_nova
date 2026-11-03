@@ -1,0 +1,51 @@
+{
+  "production_model": "Linear SVC",
+  "best_cv_f1": 1.0,
+  "test_metrics": {
+    "test_accuracy": 1.0,
+    "test_weighted_f1": 1.0
+  },
+  "cv_leaderboard": {
+    "Linear SVC": {
+      "cv_accuracy": 1.0,
+      "cv_weighted_f1": 1.0
+    },
+    "Multinomial Naive Bayes": {
+      "cv_accuracy": 1.0,
+      "cv_weighted_f1": 1.0
+    },
+    "Logistic Regression (Multi)": {
+      "cv_accuracy": 1.0,
+      "cv_weighted_f1": 1.0
+    }
+  },
+  "target_classes": [
+    "Advocate",
+    "Arts",
+    "Automation Testing",
+    "Blockchain",
+    "Business Analyst",
+    "Civil Engineer",
+    "Data Science",
+    "Database",
+    "DevOps Engineer",
+    "DotNet Developer",
+    "ETL Developer",
+    "Electrical Engineering",
+    "HR",
+    "Hadoop",
+    "Health and fitness",
+    "Java Developer",
+    "Mechanical Engineer",
+    "Network Security Engineer",
+    "Operations Manager",
+    "PMO",
+    "Python Developer",
+    "SAP Developer",
+    "Sales",
+    "Testing",
+    "Web Designing"
+  ],
+  "vocabulary_size": 1500,
+  "total_records": 962
+}
