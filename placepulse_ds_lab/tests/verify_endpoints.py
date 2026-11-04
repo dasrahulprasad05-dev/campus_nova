@@ -1,5 +1,5 @@
 """
-Verification script for all PlacePulse AI endpoints
+Verification script for all CampusNova AI endpoints
 """
 import sys
 import os

@@ -1,5 +1,5 @@
 """
-PlacePulse AI: Notebook Generator
+CampusNova AI: Notebook Generator
 Generates publication-quality, viva-ready Jupyter Notebooks:
 1. 01_placement_eda_and_cleaning.ipynb
 2. 02_placement_models_comparison.ipynb
@@ -57,9 +57,9 @@ def code_cell(source):
 
 def build_notebook_1():
     cells = [
-        markdown_cell("""# PlacePulse AI: Exploratory Data Analysis & Data Preprocessing
+        markdown_cell("""# CampusNova AI: Exploratory Data Analysis & Data Preprocessing
 ## Viva & Publication Ready Lab Notebook (01_placement_eda_and_cleaning.ipynb)
-**Author:** PlacePulse AI Engineering Team  
+**Author:** CampusNova AI Engineering Team  
 **Dataset Sources:** Kaggle Engineering College Placement (2,966 records) & Ben Roshan Campus Recruitment (215 records)  
 **Objective:** Ingest raw recruitment records, perform rigorous statistical exploratory analysis, address missing salary values, detect outliers, and generate feature interaction terms."""),
 
@@ -164,9 +164,9 @@ plt.show()"""),
 
 def build_notebook_2():
     cells = [
-        markdown_cell("""# PlacePulse AI: Multi-Model Placement Benchmark Training
+        markdown_cell("""# CampusNova AI: Multi-Model Placement Benchmark Training
 ## Viva & Publication Ready Lab Notebook (02_placement_models_comparison.ipynb)
-**Author:** PlacePulse AI Engineering Team  
+**Author:** CampusNova AI Engineering Team  
 **Algorithms Evaluated:** Logistic Regression, Random Forest, XGBoost, Decision Tree, Gradient Boosting  
 **Evaluation Metrics:** Accuracy, Precision, Recall, F1-Score, ROC-AUC, 5-Fold Cross-Validation, and Confusion Matrix."""),
 
@@ -262,9 +262,9 @@ pd.DataFrame(reg_benchmarks["leaderboard"]).T[["cv_mae", "test_mae", "test_rmse"
 
 def build_notebook_3():
     cells = [
-        markdown_cell("""# PlacePulse AI: Technical Resume Domain Classification & NLP Engine
+        markdown_cell("""# CampusNova AI: Technical Resume Domain Classification & NLP Engine
 ## Viva & Publication Ready Lab Notebook (03_resume_nlp_classification.ipynb)
-**Author:** PlacePulse AI Engineering Team  
+**Author:** CampusNova AI Engineering Team  
 **Dataset:** Gaurav Dutta Updated Resume Dataset (962 records, 25+ technical categories)  
 **NLP Architecture:** TF-IDF Sublinear Vectorization + LinearSVC / Multinomial Naive Bayes + LinkedIn Skill Gap Extraction."""),
 

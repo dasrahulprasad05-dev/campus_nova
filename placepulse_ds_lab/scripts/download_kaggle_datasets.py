@@ -1,7 +1,7 @@
 """
-PlacePulse AI: Automated Dataset Downloader via Kaggle CLI & Hugging Face
+CampusNova AI: Automated Dataset Downloader via Kaggle CLI & Hugging Face
 Module: scripts/download_kaggle_datasets.py
-Author: PlacePulse AI Team
+Author: CampusNova AI Team
 License: Approved Production Blueprint - v1.0.0
 """
 

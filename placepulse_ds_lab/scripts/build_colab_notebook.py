@@ -1,6 +1,6 @@
 """
-Generator for PlacePulse_AI_Colab_Master_Trainer.ipynb
-Author: PlacePulse AI Team
+Generator for CampusNova_AI_Colab_Master_Trainer.ipynb
+Author: CampusNova AI Team
 """
 
 import os
@@ -11,8 +11,8 @@ LAB_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, ".."))
 WORKSPACE_ROOT = os.path.abspath(os.path.join(LAB_DIR, ".."))
 
 NOTEBOOK_DIR = os.path.join(LAB_DIR, "notebooks")
-ROOT_NOTEBOOK_PATH = os.path.join(WORKSPACE_ROOT, "PlacePulse_AI_Colab_Master_Trainer.ipynb")
-LAB_NOTEBOOK_PATH = os.path.join(NOTEBOOK_DIR, "PlacePulse_AI_Colab_Master_Trainer.ipynb")
+ROOT_NOTEBOOK_PATH = os.path.join(WORKSPACE_ROOT, "CampusNova_AI_Colab_Master_Trainer.ipynb")
+LAB_NOTEBOOK_PATH = os.path.join(NOTEBOOK_DIR, "CampusNova_AI_Colab_Master_Trainer.ipynb")
 
 
 def md_cell(source: str):
@@ -35,9 +35,9 @@ def code_cell(source: str):
 
 def create_colab_notebook():
     cells = [
-        md_cell("""# 🎓 PlacePulse AI: Google Colab Master Dataset Downloader & ML Pipeline
+        md_cell("""# 🎓 CampusNova AI: Google Colab Master Dataset Downloader & ML Pipeline
 ### Comprehensive Dataset Ingestion, EDA, Multi-Model Training, and Export
-**Project Website:** PlacePulse AI (https://placepulse.ai / campusplacement.ai)  
+**Project Website:** CampusNova AI (https://campusnova.ai / campusplacement.ai)  
 **Target:** Ingest 6 Verified Datasets, Train Placement Classifiers, Salary Regressors, Resume NLP Models, and Export all `.joblib` & `.csv` files as a single ZIP.
 
 ---
@@ -502,7 +502,7 @@ print("🎉 Done! Unzip this archive into your local placepulse_ds_lab/ folder."
         "cells": cells,
         "metadata": {
             "colab": {
-                "name": "PlacePulse_AI_Colab_Master_Trainer.ipynb",
+                "name": "CampusNova_AI_Colab_Master_Trainer.ipynb",
                 "provenance": []
             },
             "kernelspec": {

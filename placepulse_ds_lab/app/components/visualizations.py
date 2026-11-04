@@ -1,7 +1,7 @@
 """
-PlacePulse AI: Visualization & Statistical Chart Renderers
+CampusNova AI: Visualization & Statistical Chart Renderers
 Module: app/components/visualizations.py
-Author: PlacePulse AI Team
+Author: CampusNova AI Team
 License: Approved Production Blueprint - v1.0.0
 """
 

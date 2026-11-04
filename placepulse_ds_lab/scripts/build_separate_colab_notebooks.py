@@ -16,7 +16,7 @@ Incorporate strict Data Science integrity best practices:
 - Domain transparency on Ben Roshan MBA dataset
 - Full LinkedIn job postings integration
 
-Author: PlacePulse AI Team
+Author: CampusNova AI Team
 License: Approved Production Blueprint - v1.0.0
 """
 
@@ -69,7 +69,7 @@ def get_colab_meta(name):
 def build_notebook_1():
     name = "01_Colab_Placement_Probability_Classifier.ipynb"
     cells = [
-        md_cell("""# 🎯 PlacePulse AI — B.Tech Placement Probability Classifier
+        md_cell("""# 🎯 CampusNova AI — B.Tech Placement Probability Classifier
 ### Model 1: Binary Placement Prediction Pipeline (Zero-Leakage & 5-Fold CV)
 **Target Audience:** B.Tech Engineering Students (CSE, IT, ECE, Mech, Civil, EE)  
 **Kaggle Dataset:** `tejashvi14/engineering-placements-prediction` (`collegePlace.csv` - 2,966 records)  
@@ -285,7 +285,7 @@ with open("models/classifier_benchmarks.json", "w") as f:
         "cv_leaderboard": cv_results
     }, f, indent=2)
 
-zip_name = "placepulse_placement_model.zip"
+zip_name = "campusnova_placement_model.zip"
 with zipfile.ZipFile(zip_name, "w", zipfile.ZIP_DEFLATED) as z:
     z.write("models/placement_pipeline.joblib", "placement_pipeline.joblib")
     z.write("models/classifier_benchmarks.json", "classifier_benchmarks.json")
@@ -304,7 +304,7 @@ print("Pipeline downloaded! Place it in placepulse_ds_lab/models/.")""")
 def build_notebook_2():
     name = "02_Colab_CTC_Salary_Package_Regressor.ipynb"
     cells = [
-        md_cell("""# 💰 PlacePulse AI — Expected CTC / Salary Package Regressor
+        md_cell("""# 💰 CampusNova AI — Expected CTC / Salary Package Regressor
 ### Model 2: Campus Compensation Prediction Pipeline (Repeated CV & Mean Baseline)
 **Target:** CTC Salary Package in Lakhs Per Annum (LPA)  
 **Dataset:** Kaggle `benroshan/factors-influencing-campus-placement` (`Placement_Data_Full_Class.csv` - 215 records) + `anmol4210/placement-data-full-class`  
@@ -512,7 +512,7 @@ with open("models/regressor_benchmarks.json", "w") as f:
         "dataset_note": "Ben Roshan Campus Recruitment benchmark dataset (MBA/Undergrad records)."
     }, f, indent=2)
 
-zip_name = "placepulse_salary_model.zip"
+zip_name = "campusnova_salary_model.zip"
 with zipfile.ZipFile(zip_name, "w", zipfile.ZIP_DEFLATED) as z:
     z.write("models/salary_pipeline.joblib", "salary_pipeline.joblib")
     z.write("models/regressor_benchmarks.json", "regressor_benchmarks.json")
@@ -531,7 +531,7 @@ print("Pipeline downloaded! Place it in placepulse_ds_lab/models/.")""")
 def build_notebook_3():
     name = "03_Colab_Resume_NLP_Classifier_and_Skill_Gap.ipynb"
     cells = [
-        md_cell("""# 📄 PlacePulse AI — Resume NLP Classifier & Skill-Gap Engine
+        md_cell("""# 📄 CampusNova AI — Resume NLP Classifier & Skill-Gap Engine
 ### Model 3: Technical Domain Classification (25+ Roles) & LinkedIn Skill Matching
 **Datasets:**  
 1. Kaggle `gauravduttakiit/resume-dataset` (`UpdatedResumeDataSet.csv` — 962 resumes across 25+ tech categories)  
@@ -787,7 +787,7 @@ with open("models/nlp_benchmarks.json", "w") as f:
         "classes": list(lbl_enc.classes_)
     }, f, indent=2)
 
-zip_name = "placepulse_resume_nlp_model.zip"
+zip_name = "campusnova_resume_nlp_model.zip"
 with zipfile.ZipFile(zip_name, "w", zipfile.ZIP_DEFLATED) as z:
     z.write("models/resume_classifier.joblib", "resume_classifier.joblib")
     z.write("models/resume_tfidf.joblib", "resume_tfidf.joblib")
@@ -808,7 +808,7 @@ print("Pipeline downloaded! Place it in placepulse_ds_lab/models/.")""")
 def build_notebook_4():
     name = "04_Colab_Interview_QA_Recommender_and_Downloader.ipynb"
     cells = [
-        md_cell("""# 💡 PlacePulse AI — Technical Interview Q&A Downloader & Recommender
+        md_cell("""# 💡 CampusNova AI — Technical Interview Q&A Downloader & Recommender
 ### Model 4: Technical Engineering Interview Question Repository
 **Dataset Source:** Hugging Face `virattt/technical-interview-qa`  
 **Direct Link:** https://huggingface.co/datasets/virattt/technical-interview-qa  

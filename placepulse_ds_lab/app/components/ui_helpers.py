@@ -1,7 +1,7 @@
 """
-PlacePulse AI: UI Components & Document Processing Helpers
+CampusNova AI: UI Components & Document Processing Helpers
 Module: app/components/ui_helpers.py
-Author: PlacePulse AI Team
+Author: CampusNova AI Team
 License: Approved Production Blueprint - v1.0.0
 """
 

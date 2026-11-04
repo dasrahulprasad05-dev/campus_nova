@@ -1,7 +1,7 @@
 """
-PlacePulse AI: Feature Engineering Pipeline & Text Preprocessor
+CampusNova AI: Feature Engineering Pipeline & Text Preprocessor
 Module: src/feature_engineering.py
-Author: PlacePulse AI Team
+Author: CampusNova AI Team
 License: Approved Production Blueprint - v1.0.0
 """
 

@@ -1,7 +1,7 @@
 """
-PlacePulse AI: RAG & Web Search Hybrid Chat Engine
+CampusNova AI: RAG & Web Search Hybrid Chat Engine
 Module: src/rag_chat_engine.py
-Author: PlacePulse AI Team
+Author: CampusNova AI Team
 License: Approved Production Blueprint - v1.0.0
 
 Workflow:
@@ -139,7 +139,7 @@ class RAGChatEngine:
                 response = client.chat.completions.create(
                     model="qwen/qwen3.8-27b",
                     messages=[
-                        {"role": "system", "content": "You are PlacePulse AI, an expert engineering campus placement mentor."},
+                        {"role": "system", "content": "You are CampusNova AI, an expert engineering campus placement mentor."},
                         {"role": "user", "content": prompt}
                     ],
                     max_tokens=650,
@@ -181,7 +181,7 @@ class RAGChatEngine:
         if source == "Knowledge base" and kb_match:
             # Build prompt for LLM or structured synthesis
             prompt = (
-                f"You are PlacePulse AI, an expert engineering campus placement mentor.\n"
+                f"You are CampusNova AI, an expert engineering campus placement mentor.\n"
                 f"Answer the student's question based strictly on this verified technical interview knowledge base entry:\n"
                 f"- Question: {kb_match.get('question')}\n"
                 f"- Target Role: {kb_match.get('role')} | Category: {kb_match.get('category')} | Difficulty: {kb_match.get('difficulty')}\n"
@@ -212,7 +212,7 @@ class RAGChatEngine:
                     web_context += f"[{idx}] {r['title']}: {r['snippet']} (Source: {r['url']})\n"
 
             prompt = (
-                f"You are PlacePulse AI, an expert engineering campus placement mentor.\n"
+                f"You are CampusNova AI, an expert engineering campus placement mentor.\n"
                 f"The student asked a question not found in the local database. Here are live web search results:\n"
                 f"{web_context}\n\n"
                 f"Student Query: {query}\n\n"

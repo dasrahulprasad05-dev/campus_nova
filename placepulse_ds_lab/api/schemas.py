@@ -1,7 +1,7 @@
 """
-PlacePulse AI: Pydantic v2 Request & Response Data Schemas
+CampusNova AI: Pydantic v2 Request & Response Data Schemas
 Module: api/schemas.py
-Author: PlacePulse AI Team
+Author: CampusNova AI Team
 License: Approved Production Blueprint - v1.0.0
 """
 

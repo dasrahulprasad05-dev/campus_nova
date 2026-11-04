@@ -1,7 +1,7 @@
 """
-PlacePulse AI: Resume Domain Classification & NLP Model Pipeline
+CampusNova AI: Resume Domain Classification & NLP Model Pipeline
 Module: src/train_nlp.py
-Author: PlacePulse AI Team
+Author: CampusNova AI Team
 License: Approved Production Blueprint - v1.0.0
 """
 

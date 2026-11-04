@@ -1,7 +1,7 @@
 """
-PlacePulse AI: Production Streamlit Intelligence & Presentation Dashboard
+CampusNova AI: Production Streamlit Intelligence & Presentation Dashboard
 Module: app/app.py
-Author: PlacePulse AI Team
+Author: CampusNova AI Team
 License: Approved Production Blueprint - v1.0.0
 """
 
@@ -59,7 +59,7 @@ if not BACKEND_API_URL:
 
 # Page configuration
 st.set_page_config(
-    page_title="PlacePulse AI | Campus Placement Intelligence",
+    page_title="CampusNova AI | Campus Placement Intelligence",
     page_icon="🎓",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -117,7 +117,7 @@ models = load_all_models()
 # SIDEBAR NAVIGATION
 # -------------------------------------------------------------
 st.sidebar.image("https://img.icons8.com/fluency/96/graduation-cap.png", width=70)
-st.sidebar.title("PlacePulse AI")
+st.sidebar.title("CampusNova AI")
 st.sidebar.caption("B.Tech Placement Intelligence & Data Science Platform")
 
 menu_choice = st.sidebar.radio(
@@ -155,10 +155,10 @@ st.sidebar.info("🧪 **Data Science Lab Version:** 1.0.0\n\n🏛️ **Benchmark
 # 1. EXECUTIVE OVERVIEW
 # -------------------------------------------------------------
 if menu_choice == "🚀 Executive Overview":
-    st.title("🎓 PlacePulse AI — Campus Placement Predictive Intelligence")
+    st.title("🎓 CampusNova AI — Campus Placement Predictive Intelligence")
     st.markdown("##### End-to-End Applied Machine Learning & NLP Platform for B.Tech Engineering Students and TPOs")
     st.write(
-        "PlacePulse AI treats placement readiness as a multi-dimensional predictive data science problem, running competitive "
+        "CampusNova AI treats placement readiness as a multi-dimensional predictive data science problem, running competitive "
         "algorithms (Logistic Regression, Random Forest, XGBoost) and NLP vector models on verified Kaggle campus placement and resume datasets. "
         "The platform eliminates data leakage by isolating preprocessing inside Scikit-Learn pipelines, evaluates models strictly via 5-Fold cross-validation, "
         "and compares performance against rigorous baseline estimators."
@@ -214,7 +214,7 @@ if menu_choice == "🚀 Executive Overview":
 # 2. AI PLACEMENT & INTERVIEW CHATBOT (RAG + WEB SEARCH HYBRID)
 # -------------------------------------------------------------
 elif menu_choice == "💬 AI Placement & Interview Chatbot":
-    st.title("💬 PlacePulse AI — Conversational Interview & Placement Mentor")
+    st.title("💬 CampusNova AI — Conversational Interview & Placement Mentor")
     st.markdown("##### Hybrid RAG Knowledge Base + Live Web Search AI Assistant")
     st.caption("Ask technical interview questions, coding concepts, placement readiness advice, or 2026 hiring trends.")
 
@@ -234,7 +234,7 @@ elif menu_choice == "💬 AI Placement & Interview Chatbot":
             {
                 "role": "assistant",
                 "content": (
-                    "👋 **Hello! I am your PlacePulse AI Placement & Interview Mentor.**\n\n"
+                    "👋 **Hello! I am your CampusNova AI Placement & Interview Mentor.**\n\n"
                     "I can help you prepare for technical rounds across all B.Tech branches:\n"
                     "- 📚 **Knowledge Base Questions:** Instant answers from our curated technical interview repository.\n"
                     "- 🌐 **Live Web Search:** Automatically searches the web for recent topics, company patterns, and 2026 recruitment trends!\n\n"

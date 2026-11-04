@@ -1,7 +1,7 @@
 """
-PlacePulse AI: Multi-Model Placement Classification & Benchmark Pipeline
+CampusNova AI: Multi-Model Placement Classification & Benchmark Pipeline
 Module: src/train_classifier.py
-Author: PlacePulse AI Team
+Author: CampusNova AI Team
 License: Approved Production Blueprint - v1.0.0
 """
 

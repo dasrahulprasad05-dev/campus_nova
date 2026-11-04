@@ -1,7 +1,7 @@
 """
-PlacePulse AI: Explainable AI & Early-Warning At-Risk Diagnostic Engine
+CampusNova AI: Explainable AI & Early-Warning At-Risk Diagnostic Engine
 Module: src/explainability.py
-Author: PlacePulse AI Team
+Author: CampusNova AI Team
 License: Approved Production Blueprint - v1.0.0
 """
 

@@ -1,7 +1,7 @@
 """
-PlacePulse AI: Data Ingestion & Validation Pipeline
+CampusNova AI: Data Ingestion & Validation Pipeline
 Module: src/data_loader.py
-Author: PlacePulse AI Team
+Author: CampusNova AI Team
 License: Approved Production Blueprint - v1.0.0
 """
 

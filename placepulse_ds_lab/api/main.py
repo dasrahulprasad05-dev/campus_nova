@@ -1,7 +1,7 @@
 """
-PlacePulse AI: Asynchronous FastAPI Placement Intelligence Microservice
+CampusNova AI: Asynchronous FastAPI Placement Intelligence Microservice
 Module: api/main.py
-Author: PlacePulse AI Team
+Author: CampusNova AI Team
 License: Approved Production Blueprint - v1.0.0
 """
 
@@ -114,7 +114,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="PlacePulse AI Microservice",
+    title="CampusNova AI Microservice",
     description="B.Tech Campus Placement Predictive Intelligence & Data Science Platform REST API",
     version="1.0.0",
     docs_url="/docs",

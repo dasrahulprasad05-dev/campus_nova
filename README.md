@@ -1,4 +1,4 @@
-# PlacePulse AI 🎓
+# CampusNova AI 🎓
 ### B.Tech Campus Placement Predictive Intelligence & Data Science Platform
 **Approved Production Blueprint — v1.0.0 (November 2026)**  
 *Domain:* B.Tech Engineering Disciplines (CSE, IT, ECE, Mech, Civil, EE)  
@@ -7,9 +7,9 @@
 ---
 
 ## 1. Executive Summary & Platform Identity
-**PlacePulse AI** is an applied Machine Learning and Data Science microservice and visual dashboard engineered specifically for B.Tech engineering college students, Training & Placement Officers (TPOs), and technical recruiters.
+**CampusNova AI** is an applied Machine Learning and Data Science microservice and visual dashboard engineered specifically for B.Tech engineering college students, Training & Placement Officers (TPOs), and technical recruiters.
 
-While traditional campus recruitment depends on static CGPA cutoffs and subjective evaluations, **PlacePulse AI treats placement readiness as a multi-dimensional predictive intelligence problem**:
+While traditional campus recruitment depends on static CGPA cutoffs and subjective evaluations, **CampusNova AI treats placement readiness as a multi-dimensional predictive intelligence problem**:
 - Ingests **3,181+ verified Kaggle recruitment records** and **962+ technical resumes** across 25+ tech categories.
 - Benchmarks multiple competitive estimators (**Random Forest, XGBoost, Regularized Logistic Regression, Ridge Regression, LinearSVC, Naive Bayes**) with 5-fold cross-validation.
 - Delivers real-time placement probability scoring (**94.6% F1-score**), expected CTC salary estimation (**±0.20 LPA MAE**), resume domain screening, and explainable bottleneck diagnosis (**Explainable AI / XAI**).
@@ -123,7 +123,7 @@ Interactive Swagger / OpenAPI UI: `http://localhost:8000/docs`
 
 ## 6. Relational Database Schema (`data/placepulse.db`)
 
-PlacePulse AI automatically manages 3 relational SQLite tables:
+CampusNova AI automatically manages 3 relational SQLite tables:
 1. `placement_predictions`: Tracks candidate name, stream, CGPA, internships, backlogs, aptitude, placement verdict, probability, predicted CTC, model version, and timestamp.
 2. `resume_evaluations`: Stores raw snippet, predicted domain, confidence, detected skills (JSON array), missing skills (JSON array), and candidate details.
 3. `model_benchmark_registry`: Stores model name, task type (`classification`, `regression`, `nlp`), accuracy, F1-score, ROC-AUC, MAE, active flag, and training timestamp.
@@ -168,7 +168,7 @@ python -m pytest placepulse_ds_lab/tests/test_api_and_models.py -v
 *Quick reference notes for academic defense, viva voce, and technical reviewer queries:*
 
 1. **Why treat placement readiness as a regression/classification problem?**  
-   Standard placement cutoffs look strictly at CGPA. PlacePulse AI proves through correlation analysis ($r = 0.58$) and non-linear interactions ($CGPA \times Internships$) that practical industry experience can compensate for moderate academic marks and dramatically alter the shortlisting boundary.
+   Standard placement cutoffs look strictly at CGPA. CampusNova AI proves through correlation analysis ($r = 0.58$) and non-linear interactions ($CGPA \times Internships$) that practical industry experience can compensate for moderate academic marks and dramatically alter the shortlisting boundary.
 2. **Why evaluate multiple algorithms instead of picking one?**  
    Following strict Data Science lifecycle methodology, we benchmark linear vs non-linear vs tree ensemble algorithms. L2-regularized logistic regression and Ridge regression achieved the lowest generalization error and highest F1-scores without overfitting the benchmark splits.
 3. **How does the Explainable AI (XAI) engine work?**  

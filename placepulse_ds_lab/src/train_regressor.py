@@ -1,13 +1,13 @@
 """
-PlacePulse AI: CTC / Salary Package Regression Pipeline
+CampusNova AI: CTC / Salary Package Regression Pipeline
 Module: src/train_regressor.py
-Author: PlacePulse AI Team
+Author: CampusNova AI Team
 License: Approved Production Blueprint - v1.0.0
 
 NOTE ON DATASET DOMAIN INTEGRITY:
 The Ben Roshan Campus Recruitment benchmark dataset is based on institutional recruitment
 with MBA and undergraduate degree records (degree_p, etest_p, workex, salary).
-In PlacePulse AI, this dataset serves as an empirical compensation benchmark for campus hiring
+In CampusNova AI, this dataset serves as an empirical compensation benchmark for campus hiring
 and aptitude evaluation. It is explicitly labeled as general campus recruitment compensation,
 rather than exclusively B.Tech engineering salaries.
 """

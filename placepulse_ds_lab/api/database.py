@@ -1,7 +1,7 @@
 """
-PlacePulse AI: Database Connection & Schema Management
+CampusNova AI: Database Connection & Schema Management
 Module: api/database.py
-Author: PlacePulse AI Team
+Author: CampusNova AI Team
 License: Approved Production Blueprint - v1.0.0
 """
 

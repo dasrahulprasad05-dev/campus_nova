@@ -1,7 +1,7 @@
 """
-PlacePulse AI: Automated Test Suite
+CampusNova AI: Automated Test Suite
 Module: tests/test_api_and_models.py
-Author: PlacePulse AI Team
+Author: CampusNova AI Team
 License: Approved Production Blueprint - v1.0.0
 """
 
