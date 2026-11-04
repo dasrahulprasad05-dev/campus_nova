@@ -199,8 +199,13 @@ elif menu_choice == "💬 AI Placement & Interview Chatbot":
 
     # Sidebar settings
     with st.sidebar.expander("⚙️ AI Mentor Settings", expanded=False):
-        api_key_input = st.text_input("Gemini API Key (optional):", type="password", help="Leave blank to use built-in grounded extractive synthesis.")
-        st.caption("If provided, Gemini 2.5 Flash refines and customizes explanations.")
+        api_key_input = st.text_input(
+            "Groq / Gemini API Key:",
+            value=os.environ.get("GROQ_API_KEY", ""),
+            type="password",
+            help="Groq (gsk_...) or Gemini (AIza...) key. Default key is preloaded from .env."
+        )
+        st.caption("⚡ Supported: Groq (Qwen-27B / Llama), Gemini (2.5-Flash)")
 
     # Initialize session chat state
     if "chat_messages" not in st.session_state:
@@ -270,8 +275,8 @@ elif menu_choice == "💬 AI Placement & Interview Chatbot":
                     rag_engine = RAGChatEngine()
                     models["rag_engine"] = rag_engine
 
-                gemini_key = api_key_input if 'api_key_input' in locals() and api_key_input else None
-                result = rag_engine.chat(query=effective_query, api_key=gemini_key)
+                llm_key = api_key_input if 'api_key_input' in locals() and api_key_input else None
+                result = rag_engine.chat(query=effective_query, api_key=llm_key)
 
             # Render source badge
             if result["source"] == "Knowledge base":

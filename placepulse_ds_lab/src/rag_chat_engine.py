@@ -22,8 +22,22 @@ from sklearn.metrics.pairwise import cosine_similarity
 class RAGChatEngine:
     def __init__(self, qa_csv_path: Optional[str] = None, similarity_threshold: float = 0.22):
         self.similarity_threshold = similarity_threshold
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        
+        # Auto-load .env if present
+        env_path = os.path.join(base_dir, ".env")
+        if os.path.exists(env_path):
+            try:
+                with open(env_path, "r", encoding="utf-8") as f:
+                    for line in f:
+                        line = line.strip()
+                        if line and not line.startswith("#") and "=" in line:
+                            k, v = line.split("=", 1)
+                            os.environ.setdefault(k.strip(), v.strip())
+            except Exception:
+                pass
+
         if qa_csv_path is None:
-            base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
             qa_csv_path = os.path.join(base_dir, "data", "raw", "technical_interview_qa.csv")
         
         self.qa_csv_path = qa_csv_path
@@ -99,23 +113,57 @@ class RAGChatEngine:
 
         return results_list
 
-    def _call_gemini_llm(self, prompt: str, api_key: Optional[str] = None) -> Optional[str]:
-        """Invokes Gemini 2.5 Flash if an API key is provided."""
-        effective_key = api_key or os.environ.get("GEMINI_API_KEY")
-        if not effective_key:
-            return None
+    def _call_llm(self, prompt: str, api_key: Optional[str] = None) -> Optional[str]:
+        """
+        Invokes LLM (Groq, Gemini, or OpenAI) based on provided key or environment variables.
+        Supports:
+        - Groq (keys starting with 'gsk_' or GROQ_API_KEY)
+        - Google Gemini (keys starting with 'AIza' or GEMINI_API_KEY)
+        """
+        groq_key = os.environ.get("GROQ_API_KEY")
+        gemini_key = os.environ.get("GEMINI_API_KEY")
 
-        try:
-            from google import genai
-            client = genai.Client(api_key=effective_key)
-            response = client.models.generate_content(
-                model="gemini-2.5-flash",
-                contents=prompt
-            )
-            if response and hasattr(response, "text") and response.text:
-                return response.text.strip()
-        except Exception as e:
-            print(f"Notice: Gemini LLM call skipped ({e})")
+        if api_key:
+            if api_key.startswith("gsk_"):
+                groq_key = api_key
+            elif api_key.startswith("AIza"):
+                gemini_key = api_key
+            else:
+                groq_key = groq_key or api_key
+
+        # 1. Groq (Ultra-fast inference via Qwen/Qwen3.8-27b)
+        if groq_key:
+            try:
+                from groq import Groq
+                client = Groq(api_key=groq_key)
+                response = client.chat.completions.create(
+                    model="qwen/qwen3.8-27b",
+                    messages=[
+                        {"role": "system", "content": "You are PlacePulse AI, an expert engineering campus placement mentor."},
+                        {"role": "user", "content": prompt}
+                    ],
+                    max_tokens=650,
+                    temperature=0.3
+                )
+                if response.choices and response.choices[0].message.content:
+                    return response.choices[0].message.content.strip()
+            except Exception as e:
+                print(f"Notice: Groq LLM call failed ({e})")
+
+        # 2. Google Gemini
+        if gemini_key:
+            try:
+                from google import genai
+                client = genai.Client(api_key=gemini_key)
+                response = client.models.generate_content(
+                    model="gemini-2.5-flash",
+                    contents=prompt
+                )
+                if response and hasattr(response, "text") and response.text:
+                    return response.text.strip()
+            except Exception as e:
+                print(f"Notice: Gemini LLM call skipped ({e})")
+
         return None
 
     def synthesize_answer(
@@ -127,22 +175,22 @@ class RAGChatEngine:
         api_key: Optional[str] = None
     ) -> str:
         """
-        Synthesizes student-friendly explanation either via Gemini LLM or
-        built-in structured synthesis.
+        Synthesizes student-friendly explanation via Groq/Gemini LLM or
+        built-in structured synthesis fallback.
         """
         if source == "Knowledge base" and kb_match:
             # Build prompt for LLM or structured synthesis
             prompt = (
-                f"You are PlacePulse AI, an expert engineering campus placement mentor. "
+                f"You are PlacePulse AI, an expert engineering campus placement mentor.\n"
                 f"Answer the student's question based strictly on this verified technical interview knowledge base entry:\n"
-                f"Question: {kb_match.get('question')}\n"
-                f"Role: {kb_match.get('role')} | Category: {kb_match.get('category')} | Difficulty: {kb_match.get('difficulty')}\n"
-                f"Official Answer Summary: {kb_match.get('answer_summary')}\n\n"
+                f"- Question: {kb_match.get('question')}\n"
+                f"- Target Role: {kb_match.get('role')} | Category: {kb_match.get('category')} | Difficulty: {kb_match.get('difficulty')}\n"
+                f"- Grounded Technical Explanation: {kb_match.get('answer_summary')}\n\n"
                 f"Student Query: {query}\n\n"
-                f"Instructions: Provide a clear, thorough, and highly educational explanation suitable for a technical interview round. "
-                f"Include key definitions, code/architecture concepts if relevant, and practical placement tips."
+                f"Instructions: Provide a clear, structured, and highly educational explanation suitable for a technical interview round. "
+                f"Include key definitions, technical breakdown, and a practical placement interview tip."
             )
-            llm_reply = self._call_gemini_llm(prompt, api_key)
+            llm_reply = self._call_llm(prompt, api_key)
             if llm_reply:
                 return llm_reply
 
@@ -164,14 +212,14 @@ class RAGChatEngine:
                     web_context += f"[{idx}] {r['title']}: {r['snippet']} (Source: {r['url']})\n"
 
             prompt = (
-                f"You are PlacePulse AI, an expert engineering campus placement mentor. "
+                f"You are PlacePulse AI, an expert engineering campus placement mentor.\n"
                 f"The student asked a question not found in the local database. Here are live web search results:\n"
                 f"{web_context}\n\n"
                 f"Student Query: {query}\n\n"
                 f"Instructions: Synthesize a concise, accurate, and structured answer answering the student's query. "
                 f"Focus on practical implications for engineering campus recruitment and technical interviews."
             )
-            llm_reply = self._call_gemini_llm(prompt, api_key)
+            llm_reply = self._call_llm(prompt, api_key)
             if llm_reply:
                 return llm_reply
 

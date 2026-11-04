@@ -23,6 +23,7 @@ pypdfium2>=4.30.0
 # RAG & Web Search Hybrid Chatbot
 ddgs>=9.0.0
 google-genai>=2.0.0
+groq>=1.6.0
 
 # Testing & Quality Assurance
 pytest>=8.0.0
