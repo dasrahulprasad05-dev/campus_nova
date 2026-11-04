@@ -3,8 +3,22 @@
  * Connects directly to Render FastAPI Microservice
  */
 
-const DEFAULT_BACKEND_URL = 'https://campus-nova-purr.onrender.com';
-export const API_BASE_URL = import.meta.env.VITE_API_URL || DEFAULT_BACKEND_URL;
+const getBaseUrl = () => {
+  if (import.meta.env.VITE_API_URL) {
+    return import.meta.env.VITE_API_URL;
+  }
+  if (typeof window !== 'undefined' && window.location.origin) {
+    // If running on Vite dev port 5173, point to production Render backend
+    if (window.location.port === '5173') {
+      return 'https://campus-nova-purr.onrender.com';
+    }
+    // On Render (same origin), relative path works seamlessly
+    return '';
+  }
+  return 'https://campus-nova-purr.onrender.com';
+};
+
+export const API_BASE_URL = getBaseUrl();
 
 /**
  * Health check
@@ -182,4 +196,3 @@ export async function getEdaMetrics() {
     return null;
   }
 }
-

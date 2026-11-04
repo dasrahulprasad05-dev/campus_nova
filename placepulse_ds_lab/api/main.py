@@ -16,12 +16,15 @@ from typing import Dict, Any, List
 
 from fastapi import FastAPI, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 
 # Add src and api to path
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 SRC_DIR = os.path.join(CURRENT_DIR, "..", "src")
 DATA_DIR = os.path.join(CURRENT_DIR, "..", "data")
 MODELS_DIR = os.path.join(CURRENT_DIR, "..", "models")
+FRONTEND_DIST = os.path.abspath(os.path.join(CURRENT_DIR, "..", "..", "frontend", "dist"))
 
 if SRC_DIR not in sys.path:
     sys.path.insert(0, SRC_DIR)
@@ -130,6 +133,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Mount compiled React Liquid Glass static assets
+assets_dir = os.path.join(FRONTEND_DIST, "assets")
+if os.path.exists(assets_dir):
+    app.mount("/assets", StaticFiles(directory=assets_dir), name="assets")
 
 
 @app.get("/api/v1/health", response_model=HealthResponse, tags=["System Health"])
@@ -454,4 +462,32 @@ async def chat_with_mentor(req: ChatQueryRequest):
         role=res.get("role"),
         web_links=[WebLinkItem(title=item["title"], url=item["url"]) for item in res.get("web_links", [])]
     )
+
+# -------------------------------------------------------------
+# 8. Single Unified Full-Stack SPA Serving (Render Web Portal)
+# -------------------------------------------------------------
+@app.get("/", include_in_schema=False)
+async def serve_spa_root():
+    """Serves compiled React Liquid Glass SPA on root URL."""
+    index_file = os.path.join(FRONTEND_DIST, "index.html")
+    if os.path.exists(index_file):
+        return FileResponse(index_file)
+    return {"status": "ok", "message": "CampusNova AI Microservice API is running. Build frontend/dist to view UI."}
+
+
+@app.get("/{full_path:path}", include_in_schema=False)
+async def serve_spa_catch_all(full_path: str):
+    """Fallback catch-all route for React client-side routing and static assets."""
+    if full_path.startswith("api/") or full_path in ["docs", "redoc", "openapi.json", "chat"]:
+        raise HTTPException(status_code=404, detail="API route not found")
+
+    file_candidate = os.path.join(FRONTEND_DIST, full_path)
+    if os.path.exists(file_candidate) and os.path.isfile(file_candidate):
+        return FileResponse(file_candidate)
+
+    index_file = os.path.join(FRONTEND_DIST, "index.html")
+    if os.path.exists(index_file):
+        return FileResponse(index_file)
+
+    raise HTTPException(status_code=404, detail="Page not found")
 

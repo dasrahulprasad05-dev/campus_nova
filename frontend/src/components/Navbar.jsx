@@ -1,14 +1,14 @@
 import React from 'react';
-import { 
-  GraduationCap, 
-  BarChart3, 
-  Target, 
-  DollarSign, 
-  FileText, 
-  AlertTriangle, 
-  MessageSquareCode, 
-  BookOpen, 
-  History, 
+import {
+  GraduationCap,
+  BarChart3,
+  Target,
+  DollarSign,
+  FileText,
+  AlertTriangle,
+  MessageSquareCode,
+  BookOpen,
+  History,
   ExternalLink,
   Sparkles
 } from 'lucide-react';
@@ -31,10 +31,10 @@ export default function Navbar({ activeTab, setActiveTab, backendStatus }) {
   return (
     <header className="liquid-glass rounded-2xl px-4 sm:px-6 py-2.5 shadow-2xl transition-all">
       <div className="flex items-center justify-between">
-        
+
         {/* Brand Logo with Liquid Gradient Glow */}
-        <div 
-          className="flex items-center space-x-3 cursor-pointer group select-none" 
+        <div
+          className="flex items-center space-x-3 cursor-pointer group select-none"
           onClick={() => setActiveTab('dashboard')}
         >
           <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-500 to-purple-600 flex items-center justify-center shadow-lg shadow-blue-500/30 ring-1 ring-white/40 group-hover:scale-105 transition-all">
@@ -58,12 +58,11 @@ export default function Navbar({ activeTab, setActiveTab, backendStatus }) {
         {/* Right Status Pill & GitHub Link */}
         <div className="flex items-center space-x-3">
           {/* Live Microservice Indicator */}
-          <div 
-            className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium border backdrop-blur-md transition-all ${
-              isHealthy
+          <div
+            className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium border backdrop-blur-md transition-all ${isHealthy
                 ? 'bg-emerald-500/15 border-emerald-400/40 text-emerald-300 shadow-sm shadow-emerald-500/20'
                 : 'bg-amber-500/15 border-amber-400/40 text-amber-300 shadow-sm shadow-amber-500/20'
-            }`}
+              }`}
             title={`Backend URL: ${API_BASE_URL}`}
           >
             <span className="relative flex h-2 w-2">
@@ -101,11 +100,10 @@ export default function Navbar({ activeTab, setActiveTab, backendStatus }) {
             <button
               key={item.id}
               onClick={() => setActiveTab(item.id)}
-              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all duration-200 ${
-                isActive
+              className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all duration-200 ${isActive
                   ? 'bg-gradient-to-r from-blue-600/40 via-indigo-600/40 to-purple-600/40 text-white border border-white/30 shadow-md shadow-blue-500/20 backdrop-blur-md'
                   : 'text-slate-400 hover:text-slate-100 hover:bg-white/5 border border-transparent'
-              }`}
+                }`}
             >
               <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-blue-400' : 'text-slate-400'}`} />
               <span>{item.label}</span>
