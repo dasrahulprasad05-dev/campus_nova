@@ -288,3 +288,4 @@ if __name__ == "__main__":
     slides = extract_slides(md)
     print(f"Extracted {len(slides)} slides.")
     generate_html(slides)
+

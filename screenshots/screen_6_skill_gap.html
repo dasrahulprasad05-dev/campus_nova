@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    background-color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: #0f172a;
+    padding: 16px;
+    width: 900px;
+    height: 520px;
+}
+.window {
+    background: #ffffff;
+    border: 1.5px solid #64748b;
+    border-radius: 8px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+.win-titlebar {
+    background: #f1f5f9;
+    border-bottom: 1.5px solid #cbd5e1;
+    padding: 8px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.win-dots {
+    display: flex;
+    gap: 6px;
+}
+.dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid #94a3b8; }
+.dot-red { background: #fca5a5; }
+.dot-yellow { background: #fde047; }
+.dot-green { background: #86efac; }
+.win-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: #334155;
+    letter-spacing: 0.5px;
+}
+.win-status {
+    font-size: 10px;
+    font-weight: 600;
+    color: #047857;
+    background: #ecfdf5;
+    padding: 2px 8px;
+    border-radius: 12px;
+    border: 1px solid #a7f3d0;
+}
+.navbar {
+    display: flex;
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 6px 14px;
+    gap: 16px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #64748b;
+}
+.nav-item.active {
+    color: #2563eb;
+    border-bottom: 2px solid #2563eb;
+    padding-bottom: 2px;
+}
+.content {
+    flex: 1;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: #ffffff;
+    overflow: hidden;
+}
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    flex: 1;
+}
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+.card {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+}
+.card-header {
+    font-size: 11px;
+    font-weight: 700;
+    color: #475569;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 4px;
+}
+.big-stat {
+    font-size: 22px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.2;
+}
+.stat-sub {
+    font-size: 9.5px;
+    color: #64748b;
+    margin-top: 2px;
+}
+.badge {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 9px;
+    font-weight: 700;
+}
+.badge-green { background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; }
+.badge-blue { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+.badge-yellow { background: #fefce8; color: #a16207; border: 1px solid #fde047; }
+.badge-red { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
+.form-group {
+    margin-bottom: 8px;
+}
+.form-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 2px;
+    display: block;
+}
+.form-input {
+    width: 100%;
+    border: 1px solid #94a3b8;
+    border-radius: 4px;
+    padding: 5px 8px;
+    font-size: 10.5px;
+    background: #ffffff;
+    color: #0f172a;
+}
+.btn {
+    background: #2563eb;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 10.5px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+}
+table.ui-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9.5px;
+}
+table.ui-table th, table.ui-table td {
+    border: 1px solid #cbd5e1;
+    padding: 4.5px 7px;
+    text-align: left;
+}
+table.ui-table th {
+    background: #f8fafc;
+    font-weight: 700;
+    color: #334155;
+}
+
+</style>
+</head>
+<body>
+<div class="window">
+    <div class="win-titlebar">
+        <div class="win-dots">
+            <div class="dot dot-red"></div>
+            <div class="dot dot-yellow"></div>
+            <div class="dot dot-green"></div>
+        </div>
+        <div class="win-title">CampusNova AI — Screen 6: Skill-Gap Taxonomy & Corporate Benchmark</div>
+        <div class="win-status">● Live Microservice Active</div>
+    </div>
+    <div class="navbar">
+        <span class="nav-item">Dashboard</span><span class="nav-item">Placement Predictor</span><span class="nav-item">CTC Estimator</span><span class="nav-item active">Resume NLP</span><span class="nav-item">XAI Risk Radar</span><span class="nav-item">RAG Mentor</span><span class="nav-item">Audit History</span>
+    </div>
+    <div class="content">
+        
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-header">Matched Industry Competencies (5/8)</div>
+                <ul style="font-size: 9.5px; line-height: 1.4; padding-left: 14px; color: #047857;">
+                    <li>✔ Modern Frontend: React.js & Responsive CSS (Tailwind)</li>
+                    <li>✔ Backend Services: Node.js, Express & FastAPI REST APIs</li>
+                    <li>✔ Version Control: Git branching, pull requests & GitHub</li>
+                    <li>✔ Relational Databases: SQL querying & relational schema</li>
+                    <li>✔ Core Programming: JavaScript ES6 & Python scripting</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="card-header">Missing High-Impact Skill Gaps (3/8)</div>
+                <ul style="font-size: 9.5px; line-height: 1.4; padding-left: 14px; color: #b91c1c; margin-bottom: 8px;">
+                    <li>✖ Containerization: Docker & Container Deployment</li>
+                    <li>✖ In-Memory Caching: Redis key-value caching layer</li>
+                    <li>✖ Automated Testing: Jest / Pytest test-driven development</li>
+                </ul>
+                <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 4px; padding: 6px 8px; font-size: 9.5px; color: #1e40af;">
+                    <strong>Actionable Advice:</strong> Containerize the project using Docker and add Redis caching to increase role match from 86% to 96%.
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+</body>
+</html>

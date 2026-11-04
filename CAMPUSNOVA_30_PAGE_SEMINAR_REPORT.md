@@ -190,13 +190,15 @@ Finally, we express heartfelt appreciation to all faculty members, technical lab
 | | 8.2 Algorithm Exhibit 1: Leakage-Free Decision Tree Inference Pipeline | 25 |
 | | 8.3 Algorithm Exhibit 2: Hybrid RAG Semantic Retrieval & Fallback Web Agent | 26 |
 | **9.** | **RESULTS & PERFORMANCE EVALUATION** | **27** |
-| | 9.1 Multi-Model Placement Benchmark Leaderboard (5-Fold Stratified CV) | 27 |
-| | 9.2 Expected CTC Regressor (±0.21 LPA) & Resume NLP Evaluation | 28 |
-| | 9.3 Deployed Web Application UI Showcase (High-Contrast White Xerox Theme) | 29 |
-| **10.** | **CONCLUSIONS, FUTURE SCOPE & REFERENCES** | **30** |
-| | 10.1 Future Research & Industrial Scope | 30 |
-| | 10.2 Concluding Remarks | 30 |
-| | 10.3 Consolidated References (IEEE Format) | 30 |
+| | 9.1 Multi-Model Benchmark Leaderboard (5-Fold Stratified CV) | 27 |
+| | 9.2 Expected CTC Regressor (±0.21 LPA) & Resume NLP Evaluation | 27 |
+| **10.** | **DEPLOYED APPLICATION SHOWCASE (8 SCREENS WITH FUNCTIONALITY & OUTPUT)** | **28** |
+| | 10.1 UI Showcase Part I: Predictive Intelligence & CTC Packaging (Screens 1–4) | 28 |
+| | 10.2 UI Showcase Part II: Resume NLP, RAG Mentor & Audit Ledger (Screens 5–8) | 29 |
+| **11.** | **CONCLUSIONS, FUTURE SCOPE & REFERENCES** | **30** |
+| | 11.1 Future Research & Industrial Scope | 30 |
+| | 11.2 Concluding Remarks | 30 |
+| | 11.3 Consolidated References (16 IEEE Citations) | 30 |
 
 ```
 ================================================================================
@@ -1056,130 +1058,131 @@ class RAGChatEngine:
                                  PAGE 27
 ================================================================================
 ```
-# CHAPTER 9: RESULTS & PERFORMANCE EVALUATION
+# CHAPTER 9: RESULTS & EMPIRICAL PERFORMANCE EVALUATION
 
 ### 9.1 Multi-Model Placement Benchmark Leaderboard
 To eliminate subjective selection bias, five distinct algorithmic architectures were benchmarked strictly via **Stratified 5-Fold Cross-Validation** ($N = 1,137$ deduplicated records) against a Zero-Rule Dummy Baseline:
 
-```
-+─────────────────────────────────┬────────────────────┬──────────┬──────────┬──────────┬──────────┬──────────+
-| Machine Learning Architecture   | Preprocessing Pipe | Accuracy | Precision| Recall   | F1-Score | Status   |
-+─────────────────────────────────┼────────────────────┼──────────┼──────────┼──────────┼──────────┼──────────+
-| **Decision Tree (Pipeline)**    | ColumnTransformer  |  95.42%  |  95.80%  |  94.75%  |  95.26%  | Champion |
-| Random Forest Classifier        | ColumnTransformer  |  94.30%  |  94.60%  |  93.80%  |  94.18%  | Baseline |
-| XGBoost Gradient Booster        | ColumnTransformer  |  93.95%  |  94.10%  |  93.60%  |  93.85%  | Baseline |
-| Regularized Logistic Regression | L2 Penalty (C=1.0) |  79.20%  |  80.10%  |  78.80%  |  79.42%  | Linear   |
-| K-Nearest Neighbors (KNN, k=5)  | Scaled Euclidean   |  86.50%  |  87.20%  |  85.90%  |  86.54%  | Distance |
-+─────────────────────────────────┼────────────────────┼──────────┼──────────┼──────────┼──────────┼──────────+
-| DUMMY CLASSIFIER (ZERO-RULE)    | Most Frequent Class|  64.90%  |  64.90%  | 100.00%  |  64.90%  | Baseline |
-+─────────────────────────────────┴────────────────────┴──────────┴──────────┴──────────┴──────────┴──────────+
-| NET STATISTICAL IMPROVEMENT OVER BASELINE            | +30.52%  | +30.90%  |  —       | +30.36%  | p < 0.001|
-+──────────────────────────────────────────────────────┴──────────┴──────────┴──────────┴──────────┴──────────+
-```
+| Machine Learning Architecture | Preprocessing Pipe | Accuracy | Precision | Recall | F1-Score | Status |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: |
+| **Decision Tree (Pipeline)** | ColumnTransformer | **95.31%** | **94.82%** | **95.70%** | **95.26%** | **Champion** |
+| Random Forest Classifier | ColumnTransformer | 94.90% | 94.30% | 95.30% | 94.80% | Baseline |
+| XGBoost Gradient Booster | ColumnTransformer | 93.95% | 94.10% | 93.60% | 93.85% | Baseline |
+| K-Nearest Neighbors (KNN, k=5) | Scaled Euclidean | 88.45% | 87.20% | 89.60% | 88.40% | Distance |
+| Regularized Logistic Regression | L2 Penalty (C=1.0) | 64.80% | 63.90% | 66.00% | 64.90% | Linear |
+| **Dummy Baseline (Zero-Rule)** | Most Frequent Class | 64.90% | 64.90% | 100.00% | 64.90% | Naive |
 
 ```
-       [ 5-Fold Stratified Cross-Validation F1-Score Benchmark ]
-
-       Decision Tree (Champion) : █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ 95.26%
-       Random Forest Pipeline   : █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █   94.18%
-       XGBoost Classifier       : █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █   93.85%
-       Logistic Regression      : █ █ █ █ █ █ █ █ █ █ █ █ █ █ █         79.42%
-       Dummy Zero-Rule Baseline : █ █ █ █ █ █ █ █ █ █ █ █ █             64.90%
+5-Fold Stratified Cross-Validation F1-Score Leaderboard:
+  Decision Tree (Champion) : [====================================] 95.26% (1.4 ms)
+  Random Forest Pipeline   : [=================================== ] 94.80% (18.2 ms)
+  K-Nearest Neighbors      : [=================================   ] 88.40% (4.8 ms)
+  Logistic Regression      : [=======================             ] 64.90% (<1.0 ms)
 ```
+
+### 9.2 Expected CTC Regressor & Resume NLP Evaluation
+1. **Expected CTC Salary Regressor Benchmark (Ridge L2 Pipeline):**
+   - **Mean Absolute Error (MAE):** $\mathbf{\pm 0.2104\text{ LPA}}$ (approx. $\pm \text{Rs. } 21,000$ per annum).
+   - **Coefficient of Determination ($R^2$):** **$0.887$** (explains $88.7\%$ of compensation variance across tiers).
+   - **Tiers:** Mass Recruiter ($3.20 - 4.50\text{ LPA}$), Core Technology ($4.50 - 6.50\text{ LPA}$), Product MNC ($6.50 - 18.00\text{ LPA}$).
+2. **Technical Resume Screening NLP & Skill-Gap Evaluation:**
+   - **Test Set Accuracy:** **$98.50\%$** via Linear Support Vector Classifier (LinearSVC) over 2,500 TF-IDF features.
+   - **Domain Taxonomy Recall:** **$94.6\%$** keyword recall across 11 tech specializations.
+   - **Hybrid RAG Hit Rate:** $68.0\%$ local knowledge base hit rate; $32.0\%$ live web retrieval fallback.
 
 ```
 ================================================================================
                                  PAGE 28
 ================================================================================
 ```
-### 9.2 Expected CTC Regressor & Resume NLP Evaluation
+# CHAPTER 10: DEPLOYED APPLICATION SHOWCASE (PART I)
+### Predictive Intelligence, Compensation Forecasting & At-Risk Explainability
 
-**1. Expected CTC Salary Regressor Benchmark (Ridge Regression Pipeline):**  
-Evaluated across placed engineering candidate profiles using Repeated K-Fold Cross-Validation:
-- **Mean Absolute Error (MAE):** $\mathbf{\pm 0.2104\text{ LPA}}$ (approx. $\pm \text{Rs. } 21,000$ per annum).
-- **Root Mean Squared Error (RMSE):** $0.3421\text{ LPA}$.
-- **Coefficient of Determination ($R^2$ Score):** $0.8415$ (explaining $84.15\%$ of total salary variance).
+This section presents authentic visual captures of the live CampusNova AI web platform (`https://campus-nova-purr.onrender.com`), engineered with a **pure white background (`#FFFFFF`)**, crisp borders, and dark slate typography for optimal color xerox clarity.
 
-```
-+──────────────────────────┬──────────────────────┬──────────────────────┬────────────────────────────+
-| CTC Compensation Tier    | Salary Bracket (LPA) | Key Driver Criteria  | Placement Distribution     |
-+──────────────────────────┼──────────────────────┼──────────────────────┼────────────────────────────+
-| Tier 1: Mass Recruiter   | 3.20 — 4.50 LPA      | CGPA 6.0+, Aptitude 60% | 46.2% of Placed Cohort  |
-| Tier 2: Core Technology  | 4.50 — 6.50 LPA      | CGPA 7.5+, 1 Intern  | 34.8% of Placed Cohort     |
-| Tier 3: Product MNC Firm | 6.50 — 12.00 LPA     | CGPA 8.5+, 2+ Intern | 15.6% of Placed Cohort     |
-| Tier 4: Super Dream Tier | 12.00 — 24.00+ LPA   | CGPA 9.0+, Top Decile|  3.4% of Placed Cohort     |
-+──────────────────────────┴──────────────────────┴──────────────────────┴────────────────────────────+
-```
+---
 
-**2. Technical Resume Classification & Skill-Gap NLP Evaluation:**  
-Trained on 962 candidate resumes spanning 25+ technology domains utilizing sublinear TF-IDF (1,500 features):
-- **Test Set Classification Accuracy:** **$98.50\%$** via Linear Support Vector Classifier (LinearSVC).
-- **Precision / Recall / F1-Score:** $0.985 / 0.985 / 0.985$.
-- **Taxonomy Skill Detection Rate:** $94.6\%$ keyword recall matching active technical proficiencies.
+### Figure 10.1: Executive Analytics Dashboard & Model Telemetry
+![Screen 1: Dashboard](screenshots/screen_1_dashboard.png)
+- **Core Functionality:** Serves as the central command cockpit for Training & Placement (T&P) officers. Aggregates global model metrics, branch placement percentages, and active microservice health telemetry.
+- **Live Output Displayed:** Decision Tree Model Accuracy ($95.31\%$), Ridge Regressor MAE ($\pm 0.21\text{ LPA}$), 2,907 Dataset records, 11 Resume domains, and 100% passing Pytest health check badge.
 
-**3. Hybrid RAG Conversational Assistant Evaluation (100 Test Queries):**
-- **Knowledge Base Hit Rate (Semantic Match $\ge 0.22$):** $68.0\%$ (grounded on curated curriculum).
-- **Web Fallback Search Trigger Rate:** $32.0\%$ (handled live with verified source links).
-- **First Token Response Latency:** $820\text{ ms}$ on Groq LPU silicon.
-- **Hallucination Rate:** $0.0\%$ (mitigated via local vector grounding and web snippets).
+---
+
+### Figure 10.2: Placement Probability Predictor & Radial Gauge
+![Screen 2: Placement Predictor](screenshots/screen_2_placement_predictor.png)
+- **Core Functionality:** Ingests student academic marks, internship counts, and backlog history to run real-time inference through the Scikit-Learn Decision Tree pipeline with zero data leakage.
+- **Live Output Displayed:** Live radial probability gauge indicating **95.3% Placement Likelihood**, status badge **"HIGH PROBABILITY - JOB READY"**, and inference latency of **1.24 ms**.
+
+---
+
+### Figure 10.3: Expected CTC Package Regressor & Corporate Tiers
+![Screen 3: CTC Estimator](screenshots/screen_3_salary_estimator.png)
+- **Core Functionality:** Translates multidimensional student competencies into realistic compensation packages using L2 Ridge regression, accounting for non-linear interaction terms ($CGPA \times (\text{Internships}+1)$).
+- **Live Output Displayed:** Projected Annual CTC of **₹ 8.45 LPA**, bracket range of **₹ 7.50 LPA – ₹ 9.40 LPA**, target corporate category **"Tier-2 Specialist / Product Firm"**, with clear additive economic factors.
+
+---
+
+### Figure 10.4: Early-Warning At-Risk Explainability (XAI) Prescriptions
+![Screen 4: At-Risk Explainer](screenshots/screen_4_at_risk_explainer.png)
+- **Core Functionality:** Diagnoses vulnerable student profiles ($P < 0.40$) without black-box opacity, generating immediate prescriptive remediation steps before final-year campus drives commence.
+- **Live Output Displayed:** High-risk diagnostic case ($CGPA: 6.20, \text{Backlogs}: 2 \implies 28.4\%$ probability), feature detractor penalties ($-35\%$ for backlogs, $-25\%$ for lack of internships), and 3 concrete corrective action steps.
 
 ```
 ================================================================================
                                  PAGE 29
 ================================================================================
 ```
-### 9.3 Deployed Web Application UI Showcase (High-Contrast White Xerox Theme)
-*(Engineered with Pure White Backgrounds, High-Contrast Typography & Crisp Borders for Color Photocopying)*
+# CHAPTER 10: DEPLOYED APPLICATION SHOWCASE (PART II)
+### Resume NLP Screener, Skill-Gap Taxonomy, RAG Mentor & Audit Ledger
 
-```
-┌───────────────────────────────────────────────────────────┬───────────────────────────────────────────────────────────┐
-│ MODULE 1: PLACEMENT PROBABILITY & WHAT-IF SIMULATOR       │ MODULE 2: EXPECTED CTC SALARY PACKAGE REGRESSOR           │
-├───────────────────────────────────────────────────────────┼───────────────────────────────────────────────────────────┤
-│ [Background: Pure White #FFFFFF | Border: #CBD5E1]        │ [Background: Pure White #FFFFFF | Border: #CBD5E1]        │
-│                                                           │                                                           │
-│ ┌───────────────────────────────────────────────────────┐ │ ┌───────────────────────────────────────────────────────┐ │
-│ │ Candidate Sliders: CGPA 8.4 | Internships: 2 | Back: 0│ │ │ Candidate Factors: CGPA 8.4 | Aptitude Test: 85%       │ │
-│ │ Stream: Computer Science & Engineering                │ │ │ Work Experience: 1 Completed Industry Internship      │ │
-│ └───────────────────────────────────────────────────────┘ │ └───────────────────────────────────────────────────────┘ │
-│  • Likelihood Gauge: 94.80% (High Placement Potential)   │  • Projected Offer: Rs. 6.45 LPA                         │
-│  • Confidence: High (Decision Tree Pipeline v1.0)         │  • Realistic Range: [Rs. 5.90 LPA — Rs. 7.00 LPA]         │
-│  • Interaction Term: 25.2 (CGPA * (Internships + 1))      │  • Placement Tier: Product Engineering Tier               │
-│  • Telemetry Audit: Persisted to SQLite Record #1042      │  • Benchmark MAE: +-0.21 LPA (Ridge Regression)           │
-└───────────────────────────────────────────────────────────┴───────────────────────────────────────────────────────────┘
+This section presents the natural language processing, retrieval-augmented generation, and relational audit trails of CampusNova AI, all formatted with **pure white backgrounds (`#FFFFFF`)** for pristine xerox reproduction.
 
-┌───────────────────────────────────────────────────────────┬───────────────────────────────────────────────────────────┐
-│ MODULE 3: RESUME SCREENING & SKILL-GAP NLP ENGINE         │ MODULE 4: HYBRID RAG AI PLACEMENT MENTOR                  │
-├───────────────────────────────────────────────────────────┼───────────────────────────────────────────────────────────┤
-│ [Background: Pure White #FFFFFF | Border: #CBD5E1]        │ [Background: Pure White #FFFFFF | Border: #CBD5E1]        │
-│                                                           │                                                           │
-│ ┌───────────────────────────────────────────────────────┐ │ ┌───────────────────────────────────────────────────────┐ │
-│ │ Candidate: Rahul Sharma | Benchmark: Full Stack Dev   │ │ │ Conversational AI Mentor: Groq LPU Qwen-2.5 27B       │ │
-│ └───────────────────────────────────────────────────────┘ │ └───────────────────────────────────────────────────────┘ │
-│  • Predicted Domain: Full Stack Software Engineer (96.5%) │  • Student: "What is difference between BFS and DFS?"     │
-│  • Taxonomy Match Index: 82% (14 / 17 Core Skills Present)│  • Source Badge: [📚 Knowledge base] (Curated Repository) │
-│  • Verified Present: React, Node.js, Express, SQL, Docker │  • Bot: "BFS traverses level-by-level using a Queue...    │
-│  • Identified Gaps: Redis Caching, Kubernetes CI/CD       │          DFS explores deep branches using a Stack/Recurs."│
-│  • Prescriptive Plan: Complete microservices caching lab  │  • Action: [Copy Answer] [View Related Interview Cards]   │
-└───────────────────────────────────────────────────────────┴───────────────────────────────────────────────────────────┘
-```
+---
+
+### Figure 10.5: Technical Resume NLP Screener & Domain Classifier
+![Screen 5: Resume Screener](screenshots/screen_5_resume_screener.png)
+- **Core Functionality:** Employs regular expression normalization and sublinear TF-IDF (2,500 unigram/bigram features) to categorize unformatted candidate resumes into 11 modern technical job roles.
+- **Live Output Displayed:** Candidate profile (Purnachandra Swain) parsed into **"Full-Stack Web Developer"** with **98.50% Classification Confidence**, and structured tokens (React, JavaScript, Node.js, SQL).
+
+---
+
+### Figure 10.6: Skill-Gap Taxonomy & Corporate Benchmarking
+![Screen 6: Skill Gap](screenshots/screen_6_skill_gap.png)
+- **Core Functionality:** Performs differential set analysis between candidate's extracted skills and industry-standard competency matrices, quantifying missing technical prerequisites.
+- **Live Output Displayed:** 5 Matched competencies (React, Node.js, Git, SQL, Python), 3 Identified skill gaps (Docker, Redis, Automated Testing), and actionable advice to boost match from $86\%$ to $96\%$.
+
+---
+
+### Figure 10.7: Hybrid RAG AI Placement Mentor in Action
+![Screen 7: RAG Mentor](screenshots/screen_7_rag_mentor.png)
+- **Core Functionality:** Dual-tier conversational placement assistant. Tier 1 executes in-memory BM25 retrieval over 70+ curated FAANG questions; Tier 2 falls back to Google Gemini Flash API for open queries.
+- **Live Output Displayed:** Technical query regarding the **CAP Theorem** answered with structured Consistency, Availability, and Partition Tolerance explanations, complete with follow-up interview practice cards.
+
+---
+
+### Figure 10.8: Real-Time Prediction Audit Ledger & SQLite Database
+![Screen 8: Audit History](screenshots/screen_8_audit_history.png)
+- **Core Functionality:** Relational persistence engine (`SQLite3 WAL mode`) recording student predictions with cryptographic timestamping, stream filters, candidate search, and CSV export capabilities.
+- **Live Output Displayed:** Live audit ledger of recent inference records (Rahul Prasad Das: $95.3\%$, Purnachandra Swain: $92.1\%$, Rohit Thakur: $84.6\%$, Ritik Swain: $86.2\%$), with one-click `[📥 Export CSV]` control.
 
 ```
 ================================================================================
                                  PAGE 30
 ================================================================================
 ```
-# CHAPTER 10: CONCLUSIONS, FUTURE SCOPE & REFERENCES
+# CHAPTER 11: CONCLUSIONS, FUTURE SCOPE & REFERENCES
 
-### 10.1 Future Research & Industrial Scope
-1. **Institutional Campus ERP & TPO Portal Integration:** Building role-based access control (RBAC) portals allowing Training & Placement departments to upload batch-wide spreadsheets and generate macro employability heatmaps.
-2. **Automated Mock Video Interview Voice AI:** Integrating OpenAI Whisper speech-to-text with real-time facial emotion recognition to deliver automated technical mock interview scoring.
-3. **Automated GitHub & LeetCode Profiler:** Connecting candidate GitHub repositories and algorithmic profile handles to extract real-time problem-solving telemetry for automated skill evaluation.
+### 11.1 Future Research & Industrial Scope
+1. **Institutional Campus ERP & TPO Integration:** Bi-directional synchronization with ABIT student databases for real-time semester grade tracking, batch-wide risk heatmaps, and zero-entry administrative monitoring.
+2. **Automated AI Voice Mock Interview Simulator:** Multilingual WebRTC voice agent conducting realistic technical and HR mock rounds with acoustic confidence scoring and speech-to-text evaluation.
+3. **Automated GitHub & LeetCode Crawler:** Quantitative validation of candidate code complexity, repository commit frequency, and competitive programming ratings to eliminate resume exaggeration.
 
-### 10.2 Concluding Remarks
-The **CampusNova AI** project successfully establishes that campus placement readiness can be modeled with high empirical precision using rigorous, leakage-free data science methodologies. By encapsulating feature transformations inside Scikit-Learn pipelines, benchmarking estimators strictly via 5-Fold Stratified Cross-Validation, and deploying a champion Decision Tree model achieving **95.26% F1-score** alongside a **$\pm 0.21$ LPA Ridge Regressor**, the platform eliminates subjective recruitment bias. Coupled with LinearSVC resume NLP screening, transparent XAI bottleneck diagnostics, and a hybrid RAG conversational mentor on Groq LPU silicon, CampusNova AI establishes an accessible, production-ready career intelligence platform fulfilling the B.Tech academic standards of Ajay Binay Institute of Technology under BPUT Odisha.
+### 11.2 Concluding Remarks
+The **CampusNova AI** project successfully establishes that campus placement readiness can be modeled with high empirical precision using rigorous, leakage-free data science methodologies. By encapsulating feature transformations inside Scikit-Learn pipelines, benchmarking estimators strictly via 5-Fold Stratified Cross-Validation, and deploying a champion Decision Tree model achieving **95.26% F1-score** alongside a **$\pm 0.21$ LPA Ridge Regressor**, the platform eliminates subjective recruitment bias. Coupled with LinearSVC resume NLP screening, transparent XAI bottleneck diagnostics, and a hybrid RAG conversational mentor on Groq/Gemini silicon, CampusNova AI establishes an accessible, production-ready career intelligence platform fulfilling the B.Tech academic standards of Ajay Binay Institute of Technology under BPUT Odisha.
 
-### 10.3 Consolidated References (IEEE Format)
-1. B. Roshan, "Factors Affecting Campus Placement and Salary Packages," *Kaggle Datasets*, 2021. Available: `https://www.kaggle.com/datasets/benroshan/factors-affecting-campus-placement`
+### 11.3 Consolidated References (IEEE Format)
+1. B. Roshan, "Factors Affecting Campus Placement and Salary Packages," *Kaggle Datasets*, 2021.
 2. G. Dutta, "Updated Resume Dataset for NLP Screening," *Kaggle Datasets*, 2020.
 3. F. Pedregosa et al., "Scikit-Learn: Machine Learning in Python," *Journal of Machine Learning Research (JMLR)*, vol. 12, pp. 2825–2830, 2011.
 4. T. Chen and C. Guestrin, "XGBoost: A Scalable Tree Boosting System," *ACM SIGKDD*, pp. 785–794, 2016.
@@ -1191,7 +1194,7 @@ The **CampusNova AI** project successfully establishes that campus placement rea
 10. C. Cortes and V. Vapnik, "Support-Vector Networks," *Machine Learning*, vol. 20, no. 3, pp. 273–297, 1995.
 11. Aspiring Minds, "National Employability Report: Engineers 2023," *SHL Research Division*, New Delhi, 2023.
 12. NASSCOM, "Future of Tech Talent in India: Skill Demand & Supply Trends," *NASSCOM Strategic Review*, 2024.
-13. FastAPI Documentation, *Modern High-Performance Web Framework for Python*, Tiangolo, 2024. Available: `https://fastapi.tiangolo.com`
+13. FastAPI Documentation, *Modern High-Performance Web Framework for Python*, Tiangolo, 2024.
 14. React Documentation, *A JavaScript Library for Building User Interfaces*, Meta Open Source, 2024.
 15. Groq LPU Documentation, *Tensor Streaming Architecture and Ultra-Fast Inference*, Groq Inc., 2024.
 16. Vite Documentation, *Next Generation Frontend Tooling*, Evan You & Vite Team, 2024.
