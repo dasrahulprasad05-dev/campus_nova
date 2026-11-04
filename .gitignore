@@ -22,3 +22,8 @@ kaggle.json
 Thumbs.db
 *.log
 
+
+# Node / Frontend
+node_modules/
+dist/
+.vite/
