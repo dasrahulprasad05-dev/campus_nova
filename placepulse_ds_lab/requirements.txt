@@ -1,4 +1,4 @@
-# PlacePulse AI: Dependencies
+# CampusNova AI: Dependencies
 # Core Data Science & Machine Learning
 numpy>=2.0.0
 scipy>=1.14.0
@@ -12,11 +12,6 @@ uvicorn>=0.30.0
 pydantic>=2.7.0
 python-multipart>=0.0.9
 
-# Frontend & Presentation Dashboard
-streamlit>=1.35.0
-matplotlib>=3.9.0
-seaborn>=0.13.0
-
 # Document & NLP Processing
 pypdfium2>=4.30.0
 
@@ -28,4 +23,3 @@ groq>=1.6.0
 # Testing & Quality Assurance
 pytest>=8.0.0
 httpx>=0.27.0
-

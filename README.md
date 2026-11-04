@@ -2,7 +2,7 @@
 ### B.Tech Campus Placement Predictive Intelligence & Data Science Platform
 **Approved Production Blueprint — v1.0.0 (November 2026)**  
 *Domain:* B.Tech Engineering Disciplines (CSE, IT, ECE, Mech, Civil, EE)  
-*Tech Stack:* Python 3.14 / 3.12, Scikit-Learn, XGBoost, FastAPI, Streamlit, SQLite, Joblib, Pytest
+*Tech Stack:* Python 3.14 / 3.12, Scikit-Learn, XGBoost, FastAPI, React (Vite + Tailwind CSS), SQLite, Joblib, Pytest
 
 ---
 
@@ -52,14 +52,21 @@ placepulse_ds_lab/
 │   ├── main.py                       # REST API routes and eager lifespan loader
 │   ├── schemas.py                    # Pydantic v2 data models
 │   └── database.py                   # SQLite ORM connection & table creation
-├── app/                              # Streamlit Interactive Presentation UI
-│   ├── app.py                        # Streamlit main entrypoint
-│   └── components/                   # UI helpers, PDF parsers, and matplotlib renderers
 ├── tests/                            # Automated Pytest Suite & Regression Tests
 │   ├── test_api_and_models.py
 │   └── verify_endpoints.py
-├── requirements.txt                  # Python dependencies
+├── requirements.txt                  # Python microservice dependencies
 └── README.md                         # Project documentation & viva defense guide
+
+frontend/                             # Modern React SPA Frontend (Vite + Tailwind CSS)
+├── src/
+│   ├── components/                   # Predictor, CTC, Resume NLP, XAI, Chat Mentor, Vault
+│   ├── services/api.js               # Render Cloud FastAPI REST client
+│   ├── App.jsx                       # Tab navigation & shared profile state
+│   ├── main.jsx                      # React 18 DOM mount
+│   └── index.css                     # Glassmorphic dark theme & animations
+├── package.json
+└── vite.config.js
 ```
 
 ---
@@ -71,7 +78,7 @@ placepulse_ds_lab/
 4. **Multi-Model Benchmark Training:** Stratified 80/20 train-test splits evaluated using 5-fold cross-validation.
 5. **Rigorous Model Evaluation:** Selected winning algorithms based on F1-score, ROC-AUC, and MAE.
 6. **Model Serialization:** Exported production `.joblib` binaries with schema versioning.
-7. **Production Inference & UI:** FastAPI asynchronous REST microservice + Streamlit interactive dashboard with live What-If scenario simulations.
+7. **Production Inference & UI:** FastAPI asynchronous REST microservice + Modern React SPA dashboard with live What-If scenario simulations.
 
 ---
 

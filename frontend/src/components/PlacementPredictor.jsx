@@ -310,3 +310,4 @@ export default function PlacementPredictor({ profile, setProfile, onPredictCompl
     </div>
   );
 }
+

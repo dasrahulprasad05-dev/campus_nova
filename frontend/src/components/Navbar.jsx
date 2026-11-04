@@ -117,3 +117,4 @@ export default function Navbar({ activeTab, setActiveTab, backendStatus }) {
     </header>
   );
 }
+

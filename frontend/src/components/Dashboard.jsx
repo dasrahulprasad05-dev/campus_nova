@@ -316,3 +316,4 @@ export default function Dashboard({ setActiveTab, backendStatus }) {
     </div>
   );
 }
+

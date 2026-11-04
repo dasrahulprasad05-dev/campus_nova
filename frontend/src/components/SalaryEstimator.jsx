@@ -222,3 +222,4 @@ export default function SalaryEstimator({ profile, setProfile }) {
     </div>
   );
 }
+
