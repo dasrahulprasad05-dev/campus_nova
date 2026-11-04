@@ -47,6 +47,15 @@ from components.visualizations import (
     plot_branch_placement_rates,
     plot_correlation_heatmap
 )
+import requests
+
+# Resolve Backend API URL (Render or Local)
+BACKEND_API_URL = os.environ.get("BACKEND_API_URL", "")
+if not BACKEND_API_URL:
+    try:
+        BACKEND_API_URL = st.secrets.get("BACKEND_API_URL", "")
+    except Exception:
+        BACKEND_API_URL = ""
 
 # Page configuration
 st.set_page_config(
@@ -128,6 +137,18 @@ menu_choice = st.sidebar.radio(
 )
 
 st.sidebar.markdown("---")
+if BACKEND_API_URL:
+    try:
+        r = requests.get(f"{BACKEND_API_URL.rstrip('/')}/api/v1/health", timeout=3)
+        if r.status_code == 200:
+            st.sidebar.success(f"🟢 Render Backend Connected")
+        else:
+            st.sidebar.warning(f"🟡 Render Backend: HTTP {r.status_code}")
+    except Exception:
+        st.sidebar.warning("🟠 Render Backend: Connecting/Sleeping...")
+else:
+    st.sidebar.info("💻 Standalone Mode (Local ML Pipelines)")
+
 st.sidebar.info("🧪 **Data Science Lab Version:** 1.0.0\n\n🏛️ **Benchmark Scope:** B.Tech CSE, IT, ECE, Mech, Civil, EE\n\n🔒 **Database:** SQLite Persistence Active")
 
 # -------------------------------------------------------------
