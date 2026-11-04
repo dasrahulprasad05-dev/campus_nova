@@ -239,20 +239,20 @@ export default function PlacementPredictor({ profile, setProfile, onPredictCompl
           {result ? (
             <div className="space-y-6 text-center">
               
-              {/* Radial Score Gauge */}
+              {/* Liquid Radial Score Gauge */}
               <div className="relative inline-flex items-center justify-center p-6">
-                <div className={`w-36 h-36 rounded-full border-4 flex flex-col items-center justify-center shadow-2xl transition-all ${
+                <div className={`w-40 h-40 rounded-full border-2 flex flex-col items-center justify-center transition-all ${
                   isHighProb 
-                    ? 'border-emerald-500 bg-emerald-500/10 shadow-emerald-500/20' 
-                    : 'border-rose-500 bg-rose-500/10 shadow-rose-500/20'
+                    ? 'border-emerald-400/50 bg-gradient-to-br from-emerald-500/20 via-teal-500/10 to-transparent shadow-[0_0_35px_rgba(16,185,129,0.35),inset_0_2px_4px_rgba(255,255,255,0.4)]' 
+                    : 'border-rose-400/50 bg-gradient-to-br from-rose-500/20 via-pink-500/10 to-transparent shadow-[0_0_35px_rgba(244,63,94,0.35),inset_0_2px_4px_rgba(255,255,255,0.4)]'
                 }`}>
-                  <span className={`text-4xl font-extrabold tracking-tight ${
-                    isHighProb ? 'text-emerald-400' : 'text-rose-400'
+                  <span className={`text-4xl font-extrabold tracking-tight drop-shadow-md ${
+                    isHighProb ? 'text-emerald-300' : 'text-rose-300'
                   }`}>
                     {prob}%
                   </span>
-                  <span className="text-[10px] font-mono tracking-wider text-slate-400 uppercase mt-0.5">
-                    Probability
+                  <span className="text-[10px] font-mono tracking-widest text-slate-300 uppercase mt-0.5">
+                    Likelihood
                   </span>
                 </div>
               </div>

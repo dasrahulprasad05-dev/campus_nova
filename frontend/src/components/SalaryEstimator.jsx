@@ -168,18 +168,18 @@ export default function SalaryEstimator({ profile, setProfile }) {
 
           {result ? (
             <div className="space-y-6">
-              {/* Main CTC Display */}
-              <div className="text-center py-4 bg-gradient-to-b from-indigo-950/40 to-slate-900/60 rounded-2xl border border-indigo-500/20 p-6">
+              {/* Liquid Main CTC Display */}
+              <div className="text-center py-6 bg-gradient-to-br from-indigo-600/20 via-purple-600/15 to-blue-600/10 rounded-2xl border border-white/20 shadow-[inset_0_2px_4px_rgba(255,255,255,0.25),0_15px_35px_rgba(99,102,241,0.25)] backdrop-blur-xl p-6">
                 <span className="text-xs font-mono tracking-widest text-indigo-300 uppercase">
                   Estimated CTC Offer
                 </span>
-                <div className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 mt-2">
-                  ₹{result.predicted_ctc_lpa} <span className="text-2xl text-slate-300">LPA</span>
+                <div className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-indigo-200 to-pink-300 mt-2 drop-shadow-md">
+                  ₹{result.predicted_ctc_lpa} <span className="text-2xl text-slate-200">LPA</span>
                 </div>
                 
                 {result.range && (
-                  <div className="mt-3 inline-block font-mono text-xs px-3 py-1 rounded-full bg-slate-800/80 text-slate-300 border border-slate-700/60">
-                    Confidence Range: ₹{result.range[0]} — ₹{result.range[1]} LPA
+                  <div className="mt-4 inline-block font-mono text-xs px-4 py-1 rounded-full bg-white/10 text-slate-200 border border-white/20 backdrop-blur-md shadow-inner">
+                    Confidence Interval: ₹{result.range[0]} — ₹{result.range[1]} LPA
                   </div>
                 )}
               </div>

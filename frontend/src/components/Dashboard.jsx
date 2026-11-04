@@ -130,36 +130,36 @@ export default function Dashboard({ setActiveTab, backendStatus }) {
     <div className="space-y-10 py-6">
       
       {/* Hero Section */}
-      <div className="relative rounded-2xl p-8 sm:p-10 border border-slate-800/80 bg-gradient-to-br from-slate-900/90 via-slate-900/60 to-slate-950 shadow-2xl overflow-hidden">
-        <div className="absolute -right-20 -top-20 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute -left-20 -bottom-20 w-80 h-80 bg-purple-600/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="liquid-glass-hero liquid-sheen p-8 sm:p-12">
+        <div className="absolute -right-16 -top-16 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute -left-16 -bottom-16 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
 
         <div className="relative z-10 max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-mono mb-4">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Applied Data Science & Machine Learning Engineering</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 border border-white/25 text-blue-300 text-xs font-mono mb-4 backdrop-blur-md shadow-inner">
+            <Sparkles className="w-3.5 h-3.5 text-blue-400" />
+            <span>Liquid Glass Predictive Intelligence Architecture</span>
           </div>
 
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
             Campus Placement <br />
-            <span className="bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">
+            <span className="text-liquid-gradient">
               Predictive Intelligence Platform
             </span>
           </h1>
 
-          <p className="mt-4 text-slate-300 text-sm sm:text-base leading-relaxed">
+          <p className="mt-4 text-slate-200/90 text-sm sm:text-base leading-relaxed drop-shadow-sm font-normal">
             CampusNova AI treats placement readiness as a multi-dimensional predictive data science problem, 
             running competitive algorithms (Logistic Regression, Random Forest, XGBoost) and NLP vector models 
             on verified Kaggle placement and resume corpora. Preprocessing is isolated inside Scikit-Learn pipelines 
             to eliminate data leakage.
           </p>
 
-          <div className="mt-6 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-wrap gap-3.5">
             <button
               onClick={() => setActiveTab('predictor')}
               className="btn-primary"
             >
-              <span>Test Placement Predictor</span>
+              <span>Launch Placement Predictor</span>
               <ArrowRight className="w-4 h-4" />
             </button>
             <button
