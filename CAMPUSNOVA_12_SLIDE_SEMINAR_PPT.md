@@ -550,3 +550,4 @@ Rohit Kumar Thakur (2301206103) | Ritik Kumar Swain (2301206102)
 
 #### 🎙️ Speaker Notes (Slide 12):
 > *"In conclusion, CampusNova AI demonstrates that intelligent machine learning pipelines can transform passive college placement statistics into active student success. We have delivered a complete, tested, and deployed software solution for ABIT Kataka. We express our heartfelt gratitude to our supervisor Prof. Rajesh Kumar Sahoo and HOD Prof. Pratap Kumar Champati for their continuous guidance. We are now open for questions and the viva voce defense. Thank you!"*
+
